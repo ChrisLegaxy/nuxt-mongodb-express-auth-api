@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "dev": "nodemon ./src/index.ts",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/**.ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.9.2",
+    "mongoose": "^5.8.11",
+    "passport": "^0.4.1",
+    "tslint": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.2",
+    "@types/express-session": "^1.15.16",
+    "@types/mongoose": "^5.7.1",
+    "@types/node": "^13.7.0",
+    "@types/nodemon": "^1.19.0",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}
