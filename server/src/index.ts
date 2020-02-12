@@ -1,7 +1,11 @@
 import App from './providers/App';
 
-/** Running Async Because 
- * The Database needs to be connected before the Server runs
+import cluster from 'cluster'
+
+/** 
+ * Running async 
+ * because 
+ * The database needs to be connected before the server runs
  */
 (async () => {
   await App.loadConfiguration();

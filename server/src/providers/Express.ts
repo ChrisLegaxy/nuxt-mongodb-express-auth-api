@@ -1,18 +1,32 @@
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 
 import Locals from './Locals';
 import Kernel from '../middlewares/Kernel';
 
-class Express {
-  /** Declaration
-   * @type {Application} express - Express Application
-   */
-  private express: express.Application;
 
-  /** Constructor
-   * After Express is initialize the following will be perform
-   * - Mount All Middlewares
-   * - Mount All Routes
+/**
+ *
+ *
+ * @class Express
+ */
+class Express {
+  /**
+   * Declaration
+   *
+   * @private
+   * @type {Application} express - express application
+   * @memberof Express
+   */
+  private express: Application;
+
+  /**
+   * Creates an instance of Express.
+   *
+   * After Express is initialize the following will be perform:
+   * - Mount all middlewares
+   * - Mount all express
+   *
+   * @memberof Express
    */
   constructor() {
     this.express = express();
@@ -21,23 +35,45 @@ class Express {
     this.mountRoutes();
   }
 
-  /** Mount All Middlewares */
-  private mountMiddlewares(): void {}
 
-  /** Mount All Routes */
-  private mountRoutes(): void {
+  /**
+   * Mount all middlewares
+   *
+   * @private
+   * @memberof Express
+   */
+  private mountMiddlewares(): void {
     this.express = Kernel.init(this.express);
   }
-
-  /* Initialize Express Server */
-  public init(): any {
-    /** Declaration
+  
+  /**
+   * Mount all routes
+   *
+   * @private
+   * @memberof Express
+   */
+  private mountRoutes(): void {
+    
+  }
+  
+  /**
+   * Initialize express server
+   *
+   * @returns {*} - Return express listen() method
+   * @memberof Express
+   */
+  public init() : any {
+    /** 
+     * Declaration
+     * 
      * @type {number} port - PORT that the server will run on
      */
     const port: number = Locals.config().port;
 
-    /** Express Server Initializing by listen() and on('error') is for error handling */
-    this.express
+    /** 
+     * Express server initializing by listen() and on('error') is for error handling
+     */
+    return this.express
       .listen(port, () => {
         return console.log(`Server :: Running @ 'http://localhost:${port}'`);
       })
@@ -47,4 +83,4 @@ class Express {
   }
 }
 
-export default new Express();
+export default Express;

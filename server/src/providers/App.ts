@@ -1,25 +1,42 @@
 import Express from './Express';
 import { Database } from './Database';
+import Locals from './Locals'
 
-import dotenv from 'dotenv';
 
+/**
+ *
+ *
+ * @class App
+ */
 class App {
-  /** Load Configurations */
-  public loadConfiguration() {
-    return (() => {
-      dotenv.config();
-      console.log(`Configuration loaded sucessfully`);
-    })();
+  /**
+   * Load all configurations
+   *
+   * @returns {*}
+   * @memberof App
+   */
+  public loadConfiguration() : any {
+    return Locals.load()
   }
-
-  /** Initialize Database Connection */
-  public loadDatabase() {
+  
+  /**
+   * Initialize database connection
+   *
+   * @returns {*}
+   * @memberof App
+   */
+  public loadDatabase() : any {
     return Database.init();
   }
 
-  /** Start Node Server */
-  public loadServer() {
-    return Express.init();
+  /**
+   * Start node server
+   *
+   * @returns {*}
+   * @memberof App
+   */
+  public loadServer() : any {
+    return new Express().init();
   }
 }
 

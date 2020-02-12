@@ -1,24 +1,41 @@
-import { Application } from 'express';
-
-import bodyParser from 'body-parser';
+/**
+ *
+ * @author Chris <chris.legaxy@gmail.com>
+ */
+import express, { Application } from 'express';
 import cors from 'cors';
 
+/**
+ * This class is used to define all requisites in HTTP
+ *
+ * @class Http
+ */
 class Http {
-  public static mount(express: Application): Application {
-    /** Json Body Parser */
-    express.use(bodyParser.json());
+  /**
+   *
+   *
+   * @static
+   * @param {Application} _express
+   * @returns {Application}
+   * @memberof Http
+   */
+  public static mount(_express: Application): Application {
+    /**
+     * Enables request json body parser
+     */
+    _express.use(express.json());
 
-    /** Url Encoded */
-    express.use(
-      bodyParser.urlencoded({
-        extended: false
-      })
-    );
+    /**
+     * Url Encoded
+     */
+    _express.use(express.urlencoded({ extended: false }));
 
-    /** Cross Site Origin */
-    express.use(cors());
+    /**
+     * Enables Cross Origin Resource Sharing
+     */
+    _express.use(cors());
 
-    return express;
+    return _express;
   }
 }
 
