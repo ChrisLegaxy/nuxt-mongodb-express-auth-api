@@ -11,20 +11,32 @@
 
 import { Request, Response } from 'express';
 
+import validate from 'express-validator'
+
 import User from '../../../models/User';
 
 class Register {
-  public static perform(req: Request, res: Response): any {
-    const email = req.body.email;
+
+  /**
+   *
+   *
+   * @static
+   * @param {Request} req
+   * @param {Response} res
+   * @returns {*}
+   * @memberof Register
+   */
+  public static perform(req: Request, res: Response): any { 
+    const username = req.body.username;
     const password = req.body.password;
 
     const user = new User({
-      email,
+      username,
       password
     });
 
     /** Check if this user exists before registration */
-    User.findOne({ email }, async (err, existingUser) => {
+    User.findOne({ username }, async (err, existingUser) => {
       /** Error Handling */
       if (err) {
         return res.json({

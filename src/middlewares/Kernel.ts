@@ -8,6 +8,7 @@
  * @since        1.0.0
  * @version      1.0.0
  */
+
 import { Application } from 'express';
 
 import Http from './Http';

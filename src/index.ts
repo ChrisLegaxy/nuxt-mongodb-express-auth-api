@@ -9,15 +9,13 @@
  * @version      1.0.0
  */
 
-import cluster from 'cluster';
-import os from 'os';
-
 import App from './providers/App';
 /**
  * Running async
  * because
  * The database needs to be connected before the server runs
  */
+
 const run = async () => {
   /**
    * Clear console before execution

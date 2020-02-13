@@ -12,7 +12,7 @@
 import bcrypt   from 'bcryptjs';
 
 import mongoose from 'mongoose';
-import IUser    from '../interfaces/user';
+import IUser    from '../interfaces/models/User';
 
 export interface IModelUser extends IUser, mongoose.Document {}
 
@@ -20,7 +20,7 @@ export interface IModelUser extends IUser, mongoose.Document {}
  * Define user schema
  */
 export const UserSchema = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
     unique: true,
     required: true
@@ -46,6 +46,7 @@ UserSchema.pre<IModelUser>('save', function(next): any {
         if (err) {
           next(err);
         }
+
         this.password = hash;
         next();
       });

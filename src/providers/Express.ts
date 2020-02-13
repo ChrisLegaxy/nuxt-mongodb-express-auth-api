@@ -15,9 +15,18 @@ import Kernel from '../middlewares/Kernel';
 import Locals from './Locals';
 import Routes from './Routes';
 
+
 /**
- * @description  Define express server
- * @class        Express
+ *
+ *
+ * @class Express
+ * 
+ * @constructor
+ * Creates an instance of Express.
+ *
+ * After Express is initialize the following will be perform:
+ * - Mount all middlewares
+ * - Mount all express
  */
 class Express {
   /**
@@ -30,11 +39,7 @@ class Express {
   private express: Application;
 
   /**
-   * Creates an instance of Express.
-   *
-   * After Express is initialize the following will be perform:
-   * - Mount all middlewares
-   * - Mount all express
+
    *
    * @memberof Express
    */
