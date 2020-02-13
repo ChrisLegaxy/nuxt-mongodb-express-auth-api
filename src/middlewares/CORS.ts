@@ -1,7 +1,14 @@
 /**
- *
- * @author Chris <chris.legaxy@gmail.com>
+ * @file         
+ * 
+ * @description  
+ * 
+ * @author       Chris <chris.legaxy@gmail.com>
+ * @copyright    CPC
+ * @since        1.0.0
+ * @version      1.0.0
  */
+
 import cors from 'cors';
 import { Application } from 'express';
 
@@ -16,26 +23,23 @@ import Locals from '../providers/Locals';
 class CORS {
 
 	/**
-	 *
-	 *
-	 * @param {Application} _express - express application
+	 * @description
+	 * 
+	 * Mount CORS
+	 * 
+	 * @param   {Application} _express - express application
 	 * @returns {Application}
+	 * 
 	 * @memberof CORS
 	 */
 	public static mount(_express: Application): Application {
-		/**
-		 * CORS options
-		 * 
-		 * @type {object}
-		 */
+		/** Define CORS options */
 		const options = {
 			origin: Locals.config().url,
 			optionsSuccessStatus: 200		// Some legacy browsers choke on 204
 		};
 
-		/**
-		 * Enable CORS with options
-		 */
+		/** Enables CORS with options */
 		_express.use(cors(options));
 
 		return _express;

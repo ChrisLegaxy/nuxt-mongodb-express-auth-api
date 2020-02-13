@@ -1,12 +1,19 @@
 /**
- *
- * @author Chris <chris.legaxy@gmail.com>
+ * @file         
+ * 
+ * @description  
+ * 
+ * @author       Chris <chris.legaxy@gmail.com>
+ * @copyright    CPC
+ * @since        1.0.0
+ * @version      1.0.0
  */
+
 import express, { Application } from 'express';
 import cors from 'cors';
 
 /**
- * This class is used to define all requisites in HTTP
+ * Define all requisites in HTTP
  *
  * @class Http
  */
@@ -20,19 +27,13 @@ class Http {
    * @memberof Http
    */
   public static mount(_express: Application): Application {
-    /**
-     * Enables request json body parser
-     */
+    /** Enables request json body parser */
     _express.use(express.json());
 
-    /**
-     * Url Encoded
-     */
+    /** Url Encoded */
     _express.use(express.urlencoded({ extended: false }));
 
-    /**
-     * Enables Cross Origin Resource Sharing
-     */
+    /** Enables Cross Origin Resource Sharing */
     _express.use(cors());
 
     return _express;

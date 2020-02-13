@@ -1,13 +1,23 @@
-import express, { Application, Request, Response } from 'express';
+/**
+ * @file
+ *
+ * @description
+ *
+ * @author       Chris <chris.legaxy@gmail.com>
+ * @copyright    CPC
+ * @since        1.0.0
+ * @version      1.0.0
+ */
 
-import Locals from './Locals';
+import express, { Application } from 'express';
+
 import Kernel from '../middlewares/Kernel';
-
+import Locals from './Locals';
+import Routes from './Routes';
 
 /**
- *
- *
- * @class Express
+ * @description  Define express server
+ * @class        Express
  */
 class Express {
   /**
@@ -31,10 +41,20 @@ class Express {
   constructor() {
     this.express = express();
 
+    this.mountDotEnv();
     this.mountMiddlewares();
     this.mountRoutes();
   }
 
+  /**
+   * Mount dotenv into the express's locals
+   *
+   * @private
+   * @memberof Express
+   */
+  private mountDotEnv(): void {
+    this.express = Locals.init(this.express);
+  }
 
   /**
    * Mount all middlewares
@@ -45,7 +65,7 @@ class Express {
   private mountMiddlewares(): void {
     this.express = Kernel.init(this.express);
   }
-  
+
   /**
    * Mount all routes
    *
@@ -53,26 +73,20 @@ class Express {
    * @memberof Express
    */
   private mountRoutes(): void {
-    
+    this.express = Routes.mountApi(this.express);
   }
-  
+
   /**
    * Initialize express server
    *
    * @returns {*} - Return express listen() method
    * @memberof Express
    */
-  public init() : any {
-    /** 
-     * Declaration
-     * 
-     * @type {number} port - PORT that the server will run on
-     */
-    const port: number = Locals.config().port;
+  public init(): any {
+    /** Define port */
+    const port: Number = Locals.config().port;
 
-    /** 
-     * Express server initializing by listen() and on('error') is for error handling
-     */
+    /** Express server initializing by listen() and on('error') is for error handling */
     return this.express
       .listen(port, () => {
         return console.log(`Server :: Running @ 'http://localhost:${port}'`);

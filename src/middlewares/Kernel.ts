@@ -1,16 +1,21 @@
 /**
- *
- * @author Chris <chris.legaxy@gmail.com>
+ * @file         
+ * 
+ * @description  
+ * 
+ * @author       Chris <chris.legaxy@gmail.com>
+ * @copyright    CPC
+ * @since        1.0.0
+ * @version      1.0.0
  */
 import { Application } from 'express';
 
 import Http from './Http';
 import CORS from './CORS';
-
 import Locals from '../providers/Locals'
 
 /**
- *
+ * Root class to mount all middlewares
  *
  * @class Kernel
  */
@@ -33,9 +38,7 @@ class Kernel {
       _express = CORS.mount(_express);
     }
     
-    /**
-     * Mount basic express middlewares
-     */
+    /** Mounts basic express middlewares */
     _express = Http.mount(_express);
 
     return _express;

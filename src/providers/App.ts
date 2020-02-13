@@ -1,41 +1,56 @@
-import Express from './Express';
-import { Database } from './Database';
-import Locals from './Locals'
-
-
 /**
+ * @file
  *
+ * @description
  *
- * @class App
+ * @author       Chris <chris.legaxy@gmail.com>
+ * @copyright    CPC
+ * @since        1.0.0
+ * @version      1.0.0
  */
+
+import Express from './Express';
+import Database from './Database';
+import Locals from './Locals';
+
 class App {
+  /**
+   * Clear the console
+   *
+   * @returns {Boolean}
+   * @memberof App
+   */
+  public clearConsole(): Boolean {
+    return process.stdout.write('\x1B[2J\x1B[0f');
+  }
+
   /**
    * Load all configurations
    *
-   * @returns {*}
+   * @returns {Function}
    * @memberof App
    */
-  public loadConfiguration() : any {
-    return Locals.load()
+  public loadConfiguration(): Promise<void> {
+    return Locals.load();
   }
-  
+
   /**
    * Initialize database connection
    *
-   * @returns {*}
+   * @returns {Promise<object>}
    * @memberof App
    */
-  public loadDatabase() : any {
+  public loadDatabase(): Promise<object> {
     return Database.init();
   }
 
   /**
-   * Start node server
+   * Instantiate & start server
    *
-   * @returns {*}
+   * @returns {Function}
    * @memberof App
    */
-  public loadServer() : any {
+  public loadServer(): Function {
     return new Express().init();
   }
 }
