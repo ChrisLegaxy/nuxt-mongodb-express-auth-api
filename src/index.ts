@@ -9,7 +9,7 @@
  * @version      1.0.0
  */
 
-import App from './providers/App';
+import App from '@providers/App';
 /**
  * Running async
  * because
@@ -20,12 +20,12 @@ const run = async () => {
   /**
    * Clear console before execution
    */
-  App.clearConsole();
+  await App.clearConsole();
 
   /**
    * Load all configurations
    */
-  App.loadConfiguration();
+  await App.loadConfiguration();
 
   /**
    * Connect to database before starting the server

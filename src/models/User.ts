@@ -9,10 +9,10 @@
  * @version      1.0.0
  */
 
-import bcrypt   from 'bcryptjs';
-
+import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
-import IUser    from '../interfaces/models/User';
+
+import IUser from '@interfaces/models/User';
 
 export interface IModelUser extends IUser, mongoose.Document {}
 

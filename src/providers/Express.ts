@@ -11,10 +11,10 @@
 
 import express, { Application } from 'express';
 
-import Kernel from '../middlewares/Kernel';
 import Locals from './Locals';
 import Routes from './Routes';
 
+import Kernel from '@middlewares/Kernel';
 
 /**
  *

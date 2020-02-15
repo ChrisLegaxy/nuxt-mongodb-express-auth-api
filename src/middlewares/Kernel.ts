@@ -13,7 +13,8 @@ import { Application } from 'express';
 
 import Http from './Http';
 import CORS from './CORS';
-import Locals from '../providers/Locals'
+
+import Locals from '@providers/Locals'
 
 /**
  * Root class to mount all middlewares

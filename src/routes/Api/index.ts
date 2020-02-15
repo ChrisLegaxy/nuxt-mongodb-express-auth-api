@@ -9,18 +9,16 @@
  * @version      1.0.0
  */
 
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router, Request, Response } from 'express';
 
-import RegisterController from '../../controllers/Api/Auth/Register';
-import RegisterValidator from '../../middlewares/validators/RegisterValidator';
-import { check, validationResult, body } from 'express-validator';
-import e = require('express');
+import RegisterController from '@authApi/Register';
+import RegisterValidator from '@validators/Register';
 
 /** Initialize express router */
 const router = Router();
 
 router.post(
-  '/auth/register', 
+  '/auth/register',
   RegisterValidator.validationRules(),
   RegisterValidator.validate,
   RegisterController.perform

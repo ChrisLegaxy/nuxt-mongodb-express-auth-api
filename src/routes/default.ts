@@ -17,7 +17,7 @@ const router = Router();
 router.all('*', (req: Request, res: Response): any => {
   res.status(404).json({
     success: false,
-    status: "404 Not Found",
+    status: '404 Not Found',
     message: 'Invalid route'
   });
 });

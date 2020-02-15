@@ -12,8 +12,7 @@
 import cors from 'cors';
 import { Application } from 'express';
 
-import Locals from '../providers/Locals';
-
+import Locals from '@providers/Locals';
 
 /**
  * Enables the CORS

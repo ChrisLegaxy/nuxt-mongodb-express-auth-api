@@ -11,9 +11,10 @@
 
 import { Application } from 'express';
 
-import apiRouter from '../routes/Api';
-import defaultRouter from '../routes';
 import Locals from './Locals';
+
+import apiRouter from '@routes/api';
+import defaultRouter from '@routes/default';
 
 class Routes {
   public static mountApi(_express: Application): Application {

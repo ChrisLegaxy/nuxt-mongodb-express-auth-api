@@ -11,12 +11,9 @@
 
 import { Request, Response } from 'express';
 
-import validate from 'express-validator'
-
-import User from '../../../models/User';
+import User from '@models/User'
 
 class Register {
-
   /**
    *
    *
@@ -26,9 +23,9 @@ class Register {
    * @returns {*}
    * @memberof Register
    */
-  public static perform(req: Request, res: Response): any { 
-    const username = req.body.username;
-    const password = req.body.password;
+  public static perform(req: Request, res: Response): any {
+    const username: String = req.body.username;
+    const password: String = req.body.password;
 
     const user = new User({
       username,
@@ -67,7 +64,7 @@ class Register {
         return res.json({
           success: true,
           status: 200,
-          message: 'You have successfully registered with us',
+          message: `You have successfully been registered, Welcome ${req.body.username}`,
           data: user
         });
       });

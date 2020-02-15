@@ -43,7 +43,10 @@ class Database {
     /** Return mongoose connection promise */
     return mongoose.connect(dataSource, options, (error: MongoError) => {
       if (error) {
-        console.log(error);
+        console.log({
+          name: error.name,
+          message: error.message
+        });
       } else {
         console.log('Database :: Connected successfully');
       }
