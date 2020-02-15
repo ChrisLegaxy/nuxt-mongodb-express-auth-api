@@ -9,7 +9,7 @@
  * @version      1.0.0
  */
 
-import App from '@providers/App';
+import App from './providers/App';
 /**
  * Running async
  * because

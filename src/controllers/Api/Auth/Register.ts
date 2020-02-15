@@ -11,7 +11,7 @@
 
 import { Request, Response } from 'express';
 
-import User from '@models/User'
+import User from '../../../models/User';
 
 class Register {
   /**
@@ -56,7 +56,7 @@ class Register {
           return res.status(422).json({
             success: false,
             status: 422,
-            message: 'An error occured during registration',
+            message: ['An error occured during registration'],
             error: err
           });
         }
@@ -64,7 +64,9 @@ class Register {
         return res.json({
           success: true,
           status: 200,
-          message: `You have successfully been registered, Welcome ${req.body.username}`,
+          message: [
+            `You have successfully been registered, Welcome ${req.body.username}`
+          ],
           data: user
         });
       });

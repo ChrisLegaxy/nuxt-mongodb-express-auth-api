@@ -11,8 +11,8 @@
 
 import { Router, Request, Response } from 'express';
 
-import RegisterController from '@authApi/Register';
-import RegisterValidator from '@validators/Register';
+import RegisterController from '../../controllers/api/auth/Register';
+import RegisterValidator from '../../middlewares/validators/Register';
 
 /** Initialize express router */
 const router = Router();

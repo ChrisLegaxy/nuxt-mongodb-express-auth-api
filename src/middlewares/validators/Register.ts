@@ -75,7 +75,7 @@ class RegisterValidator {
      * @type {Array<object>}
      */
     const extractedErrors: Array<object> = [];
-    errors.array().map(err => extractedErrors.push({ [err.param]: [err.msg] }));
+    errors.array().map(err => extractedErrors.push({ warning: [err.msg] }));
 
     return res.status(422).json({
       success: false,

@@ -14,7 +14,7 @@ import express, { Application } from 'express';
 import Locals from './Locals';
 import Routes from './Routes';
 
-import Kernel from '@middlewares/Kernel';
+import Kernel from '../middlewares/Kernel';
 
 /**
  *
