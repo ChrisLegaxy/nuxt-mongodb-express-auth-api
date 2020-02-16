@@ -1,4 +1,4 @@
-# MENN Auth API
+# MENN Auth API 🙌🎇🎆
 
 MENN stands for **MongoDB, Express, Nuxt JS, Node JS**
 
@@ -105,7 +105,7 @@ $ npm run dev
 
 ## Author
 
-> **Vansen Hengmeanrith (Chris)**
+> **Vansen Hengmeanrith (Chris)** 😎
 
 ## License
 
