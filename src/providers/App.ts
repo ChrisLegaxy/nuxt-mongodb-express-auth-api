@@ -51,7 +51,7 @@ class App {
    * @memberof App
    */
   public loadServer(): Function {
-    return new Express().init();
+    return Express.init();
   }
 }
 

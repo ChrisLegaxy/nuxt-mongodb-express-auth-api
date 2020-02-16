@@ -58,7 +58,7 @@ class Express {
    * @memberof Express
    */
   private mountDotEnv(): void {
-    this.express = Locals.init(this.express);
+    this.express = Locals.init(this.express)
   }
 
   /**
@@ -73,7 +73,7 @@ class Express {
 
   /**
    * Mount all routes
-   *
+   *z
    * @private
    * @memberof Express
    */
@@ -100,6 +100,10 @@ class Express {
         return console.log(error);
       });
   }
+
+  public returnExpress() {
+    return this.express;
+  }
 }
 
-export default Express;
+export default new Express();

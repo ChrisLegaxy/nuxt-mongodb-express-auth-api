@@ -11,6 +11,7 @@
 
 import { Application } from 'express';
 import dotevn from 'dotenv';
+import { resolve } from 'dns';
 
 /**
  * Define app's locals and config
@@ -27,7 +28,7 @@ class Locals {
    */
   public static load(): Promise<void> {
     return (async () => {
-      await dotevn.config()
+      await dotevn.config();
       console.log('Configuration :: Loaded sucessfully');
     })();
   }
@@ -41,17 +42,18 @@ class Locals {
   public static config(): any {
     const url = process.env.APP_URL || `http://localhost:${process.env.PORT}`;
     const port = process.env.PORT || 3000;
-    const appSecret = process.env.APP_SECRET || '';
-    const mongooseUrl = process.env.MONGOOSE_URL || '';
+    const appSecret = process.env.APP_SECRET || 'Your Secret Lies Here';
+    const mongooseUrl = process.env.MONGOOSE_URL;
 
     const isCORSEnabled = process.env.CORS_ENABLED || true;
-
+    const jwtExpiresIn = process.env.JWT_EXPIRES_IN || 3;
     const apiPrefix = process.env.API_PREFIX || 'api';
 
     return {
       apiPrefix,
       appSecret,
       isCORSEnabled,
+      jwtExpiresIn,
       mongooseUrl,
       port,
       url

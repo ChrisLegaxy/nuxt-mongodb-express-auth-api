@@ -8,6 +8,7 @@
  * @since        1.0.0
  * @version      1.0.0
  */
+import express, { Request, Response } from 'express'
 
 import App from './providers/App';
 /**
@@ -30,7 +31,7 @@ const run = async () => {
   /**
    * Connect to database before starting the server
    */
-  await App.loadDatabase();
+  await App.loadDatabase();  
 
   /**
    * Server starts

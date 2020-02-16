@@ -9,7 +9,7 @@
  * @version      1.0.0
  */
 
-import { Application } from 'express';
+import { Application, Response } from 'express';
 
 import Locals from './Locals';
 
@@ -23,7 +23,7 @@ class Routes {
 
     /** API Routes */
     _express.use(`/${apiPrefix}`, apiRouter);
-
+    
     /** Default Routes */
     _express.use('/', defaultRouter);
 

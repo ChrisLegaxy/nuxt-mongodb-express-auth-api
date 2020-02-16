@@ -6,7 +6,7 @@ import { body, validationResult, ValidationChain } from 'express-validator';
  *
  * @class RegisterValidator
  */
-class RegisterValidator {
+class LoginValidator {
   /**
    * Defines validation rules for RegistrationController
    *
@@ -16,11 +16,6 @@ class RegisterValidator {
    */
   public static validationRules(): Array<ValidationChain> {
     return [
-      body('name')
-        .notEmpty()
-        .withMessage('Name cannot be empty')
-        .matches(/^\S*$/)
-        .withMessage('Name cannot contains spaces'),
       body('email')
         .notEmpty()
         .withMessage('Email cannot be empty')
@@ -30,28 +25,6 @@ class RegisterValidator {
       body('password')
         .notEmpty()
         .withMessage('Password cannot be empty')
-        .isLength({ min: 8 })
-        .withMessage('Password must be at least 8 characters'),
-      body('confirmPassword')
-        .notEmpty()
-        .withMessage('Password confirmation cannot be empty')
-        /**
-         * Custom function is used to compare if password is equals to confirmPassword
-         *
-         * We can't use equals function as we can't access req object
-         *
-         * @param {string} value - value that we got from body('confirmPassword')
-         * @param {object} { req } - an optional req object that cannot be type defined as it will execute
-         *                           during runtime, the server will know and get req object to return req.body.password
-         */
-        .custom((confirmPassword, { req }) => {
-          if (confirmPassword != req.body.password) {
-            throw new Error('Password confirmation does not match password');
-          } else {
-            return true;
-          }
-        })
-        .withMessage('Password confirmation does not match')
     ];
   }
 
@@ -90,4 +63,4 @@ class RegisterValidator {
   }
 }
 
-export default RegisterValidator;
+export default LoginValidator;

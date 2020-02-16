@@ -24,28 +24,30 @@ class Register {
    * @memberof Register
    */
   public static perform(req: Request, res: Response): any {
-    const username: String = req.body.username;
+    const name: String = req.body.name;
+    const email: String = req.body.email;
     const password: String = req.body.password;
 
     const user = new User({
-      username,
+      name,
+      email,
       password
     });
 
     /** Check if this user exists before registration */
-    User.findOne({ username }, async (err, existingUser) => {
+    User.findOne({ email }, async (err, existingUser) => {
       /** Error Handling */
       if (err) {
         return res.json({
           error: err
         });
       }
-
+      
       /** Check if user exists */
       if (existingUser) {
         return res.status(403).json({
           success: false,
-          status: '403 Forbidden',
+          status: 403,
           message: 'Account with email already exists'
         });
       }
@@ -61,13 +63,16 @@ class Register {
           });
         }
 
-        return res.json({
+        return res.status(200).json({
           success: true,
           status: 200,
           message: [
-            `You have successfully been registered, Welcome ${req.body.username}`
+            `You have successfully been registered, Welcome ${user.name}!`
           ],
-          data: user
+          data: {
+            name: user.name,
+            email: user.email
+          }
         });
       });
     });
