@@ -1,6 +1,6 @@
-# MENN Auth API 🙌🎇🎆
+# Express TS Auth 🙌🎇🎆
 
-MENN stands for **MongoDB, Express, Nuxt JS, Node JS**
+**MongoDB, Express, Node JS**
 
 This application was built by following the best practices and also written in **TypeScript**
 
